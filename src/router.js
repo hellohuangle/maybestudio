@@ -1,23 +1,58 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
+  routes: [{
+      path: '/maintext',
+      name: 'maintext',
+      component: () =>
+        import( /* webpackChunkName: "MainText" */ './views/MainText.vue'),
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
-  ]
+      path: 'work',
+      name: 'work',
+      component: () =>
+        import( /* webpackChunkName: "work" */ './views/work.vue'),
+    },
+    {
+      path: '/',
+      name: 'guide',
+      component: () =>
+        import( /* webpackChunkName: "Guide" */ './views/Guide.vue'),
+    },
+    {
+      path: '/main',
+      name: 'main',
+      component: () =>
+        import( /* webpackChunkName: "Main" */ './views/Main.vue'),
+      children: [
+
+
+        {
+          path: 'works',
+          name: 'works',
+          component: () =>
+            import( /* webpackChunkName: "MainWork" */ './views/MainWork.vue'),
+        },
+
+        {
+          path: 'about',
+          name: 'about',
+          component: () =>
+            import( /* webpackChunkName: "MainAbout" */ './views/MainAbout.vue'),
+        },
+
+        {
+          path: 'home',
+          name: 'home',
+          component: () =>
+            import( /* webpackChunkName: "MainHome" */ './views/MainHome.vue'),
+        },
+
+
+      ]
+    },
+  ],
 })

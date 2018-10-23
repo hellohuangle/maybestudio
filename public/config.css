@@ -1,0 +1,25 @@
+/* 框架定位 */
+.main-flex {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 头部高度 */
+.main-flex__header {
+  background-color: #151515;
+  height: 0.88rem;
+}
+
+/* 主体头部区域 */
+.main-flex__conent {
+  flex-grow: 1;
+  background-color: #000;
+}
+
+/* tarbar区域 */
+.main-flex__footer {
+  height: 0.98rem;
+  /* background-color: red; */
+  align-items: flex-end;
+}
